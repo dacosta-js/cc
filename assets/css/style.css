@@ -75,7 +75,7 @@ img { max-width: 100%; }
 
 
 /***** Top menu *****/
-
+/*
 .navbar {
 	padding-top: 10px;
 	background: #333;
@@ -83,6 +83,7 @@ img { max-width: 100%; }
 	border: 0;
 	-o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
 }
+
 .navbar.navbar-no-bg { background: none; }
 
 ul.navbar-nav {
@@ -103,6 +104,7 @@ ul.navbar-nav {
 	font-size: 28px;
 	vertical-align: middle;
 }
+
 .navbar-inverse ul.navbar-nav li .li-social a:hover, 
 .navbar-inverse ul.navbar-nav li .li-social a:focus { border: 0; color: #19b9e7; }
 
@@ -111,7 +113,7 @@ ul.navbar-nav {
 	background: url(../img/logo.png) left center no-repeat;
 	text-indent: -99999px;
 }
-
+*/
 
 /***** Top content *****/
 
