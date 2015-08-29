@@ -117,6 +117,34 @@ ul.navbar-nav {
 
 /***** Top content *****/
 
+.navbar {
+	background-color: rgba(0, 0, 0, 0.35);
+border: 0;
+}
+
+.navbar-form {
+    border-color: rgba(0, 0, 0, 0.35);
+border: 0;
+}
+
+.nav .active a:hover {
+background-color: rgba(0, 0, 0, 0.35);
+}
+
+.navbar-inverse .navbar-nav>.active>a:focus,.navbar-inverse .navbar-nav>.active>a:hover{color:#fff;background-color:rgba(0, 0, 0, 0.35)}.navbar-inverse .navbar-nav>.disabled>a
+
+.navbar a{
+	background-color: rgba(0, 0, 0, 0.35);
+}
+
+.navbar a:hover{
+	background-color: rgba(0, 0, 0, 0.35);
+}
+
+.navbar .active a:hover{
+	background-color: rgba(0, 0, 0, 0.35);
+}
+
 .inner-bg {
     padding: 40px 0 170px 0;
 }
