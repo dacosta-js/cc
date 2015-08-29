@@ -16,12 +16,6 @@
         <link rel="stylesheet" href="assets/css/style.css">
 	<link href="assets/file_stuff/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
 
-		<!-- Include Bootstrap Datepicker -->
-	<link rel="stylesheet" href="assets/date_stuff/css/datepicker.min.css" />
-	<link rel="stylesheet" href="assets/date_stuff/css/datepicker3.min.css" />
-
-
-
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -162,8 +156,6 @@
         <script src="assets/js/scripts.js"></script>
         <script src="assets/file_stuff/js/fileinput.js" type="text/javascript"></script>
 	<script src="assets/file_stuff/js/fileinput_locale_pt-BR.js" type="text/javascript"></script>
-	<script src="assets/date_stuff/js/bootstrap-datepicker.min.js"></script>
-	<script src="assets/date_stuff/js/bootstrap-datepicker.js"></script>
 
 
 
@@ -186,48 +178,6 @@ $(document).on('ready', function() {
 
 
     });
-
-
-    $('#datePicker')
-        .datepicker({
-            format: 'mm/yyyy'
-        })
-        .on('changeDate', function(e) {
-            // Revalidate the date field
-            $('#eventForm').formValidation('revalidateField', 'date');
-        });
-
-    $('#eventForm').formValidation({
-        framework: 'bootstrap',
-        icon: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            name: {
-                validators: {
-                    notEmpty: {
-                        message: 'Nome completo obrigatório'
-                    }
-                }
-            },
-            date: {
-                validators: {
-                    notEmpty: {
-                        message: 'Data de aniversário obrigatório'
-                    },
-                    date: {
-                        format: 'MM/YYYY',
-                        message: 'Data inválida'
-                    }
-                }
-            }
-        }
-    });
-
-
-
 });
 </script>
 
