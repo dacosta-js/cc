@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="assets/css/style.css">
 	<link href="assets/file_stuff/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
 
-		<!-- Include Bootstrap Datepicker -->
+	<!-- Include Bootstrap Datepicker -->
 	<link rel="stylesheet" href="assets/date_stuff/css/datepicker.min.css" />
 	<link rel="stylesheet" href="assets/date_stuff/css/datepicker3.min.css" />
 
@@ -35,6 +35,21 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
+
+
+	<style type="text/css">
+	/**
+	 * Override feedback icon position
+	 * See http://formvalidation.io/examples/adjusting-feedback-icon-position/
+	 */
+	#eventForm .form-control-feedback {
+	    top: 0;
+	    right: 15px;
+	}
+	</style>
+
+
 
     </head>
 
@@ -103,8 +118,8 @@
                         			<!-- <i class="fa fa-envelope"></i> -->
                         		</div>
                         		<div class="form-top-right">
-                        			<h3>Editar Contato</h3>
-                            			<p>Modifique as infomações do contato</p>
+                        			<h3>Adicionar Contato</h3>
+                            			<p>Entre as infomações do contato</p>
                         		</div>
                                 </div>
 <!--
@@ -119,7 +134,7 @@
 
                 <div class="form-group">
                                
-                <input id="input-pt-BR" type="file" class="file-loading">
+                <input id="file-pt-BR" class="file" type="file">
                 </div>					
 						<div class="form-group">
 			                    		<label class="sr-only" for="contact-email">Nome Completo</label>
@@ -137,12 +152,14 @@
 			                    		<label class="sr-only" for="contact-email">Telefone</label>
 			                        	<input type="text" name="telefone" placeholder="Telefone..." class="contact-email form-control" id="contact-email">
 			                        </div>
+
 						<div class="form-group">
 							    <div class="input-group input-append date" id="datePicker">
 								<input type="text" class="form-control" name="date" placeholder="Aniversário..."/>
 								<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
 							    </div>
 						</div>
+
 			                        <button type="submit" class="btn">Salvar</button>
 			                    </form>
 		                    </div>
@@ -166,28 +183,8 @@
 	<script src="assets/date_stuff/js/bootstrap-datepicker.js"></script>
 
 
-
-
 <script>
-$(document).on('ready', function() {
-    $("#input-pt-BR").fileinput({
-        initialPreview: [
-            '<img src="./ns.jpg" class="file-preview-image" alt="The Earth" title="The Earth">'
-        ],
-        overwriteInitial: true,
-        initialCaption: "The Moon and the Earth",
-
-        language: 'pt-BR',
-        browseClass: "btn btn-success",
-        browseLabel: "Mudar imagem",
-        browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
-	showRemove: false,
-	showUpload: false
-
-
-    });
-
-
+$(document).ready(function() {
     $('#datePicker')
         .datepicker({
             format: 'mm/yyyy'
@@ -225,12 +222,44 @@ $(document).on('ready', function() {
             }
         }
     });
-
-
-
 });
 </script>
 
+
+
+<script>
+    $('#file-pt-BR').fileinput({
+        language: 'pt-BR',
+	previewFileType: "image",
+        browseClass: "btn btn-success",
+        browseLabel: "Escolher imagem",
+        browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
+        removeClass: "btn btn-danger",
+        removeLabel: "Delete",
+        removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
+        uploadClass: "btn btn-info",
+        uploadLabel: "Upload",
+        uploadIcon: "<i class=\"glyphicon glyphicon-upload\"></i> ",
+	showRemove: false,
+	showUpload: false,
+    });
+
+
+$("#input-ficons-1").fileinput({
+    uploadUrl: "/file-upload-batch/2",
+    uploadAsync: true,
+    previewFileIcon: '<i class="fa fa-file"></i>',
+    allowedPreviewTypes: null, // set to empty, null or false to disable preview for all types
+    previewFileIconSettings: {
+        'docx': '<i class="fa fa-file-word-o text-primary"></i>',
+        'xlsx': '<i class="fa fa-file-excel-o text-success"></i>',
+        'pptx': '<i class="fa fa-file-powerpoint-o text-danger"></i>',
+        'jpg': '<i class="fa fa-file-photo-o text-warning"></i>',
+        'pdf': '<i class="fa fa-file-pdf-o text-danger"></i>',
+        'zip': '<i class="fa fa-file-archive-o text-muted"></i>',
+    }
+});
+</script>
         
         <!--[if lt IE 10]>
             <script src="assets/js/placeholder.js"></script>
