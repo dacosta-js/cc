@@ -135,29 +135,29 @@
                 </div>					
 						<div class="form-group">
 			                    		<label class="sr-only" for="contact-email">Nome Completo</label>
-			                        	<input type="text" name="nome_completo" placeholder="Nome Completo..." class="contact-email form-control" id="contact-email">
+			                        	<input type="text" name="nome_completo" placeholder="Nome Completo..." class="contact-email form-control" id="contact-cname">
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="contact-subject">Apelido</label>
-			                        	<input type="text" name="apelido" placeholder="Apelido..." class="contact-subject form-control" id="contact-subject">
+			                        	<input type="text" name="apelido" placeholder="Apelido..." class="contact-subject form-control" id="contact-nickname">
 			                        </div>
 						<div class="form-group">
 			                        	<label class="sr-only" for="contact-subject">Email</label>
-			                        	<input type="text" name="email" placeholder="Email..." class="contact-email form-control" id="contact-subject">
+			                        	<input type="text" name="email" placeholder="Email..." class="contact-email form-control" id="contact-email">
 			                        </div>
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="contact-email">Telefone</label>
-			                        	<input type="text" name="telefone" placeholder="Telefone..." class="contact-email form-control" id="contact-email">
+			                        	<input type="text" name="telefone" placeholder="Telefone..." class="contact-email form-control" id="contact-telephone">
 			                        </div>
 
 						<div class="form-group">
 							    <div class="input-group input-append date" id="datePicker">
-								<input type="text" class="form-control" name="date" placeholder="Aniversário..."/>
+								<input type="text" class="form-control" id="contact-birthday" name="date" placeholder="Aniversário..."/>
 								<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
 							    </div>
 						</div>
 
-			                        <button type="submit" class="btn">Salvar</button>
+			                        <button type="submit" onclick="addContact()" class="btn">Salvar</button>
 			                    </form>
 		                    </div>
                         </div>
@@ -256,6 +256,29 @@ $("#input-ficons-1").fileinput({
         'zip': '<i class="fa fa-file-archive-o text-muted"></i>',
     }
 });
+
+function addContact() {
+    var cname = document.getElementById("contact-cname");
+    var cnickname = document.getElementById("contact-nickname");
+    var cemail = document.getElementById("contact-email");
+    var ctelephone = document.getElementById("contact-telephone");
+    var cbirthday = document.getElementById("contact-birthday");
+
+    $.ajax({
+      method: "POST",
+      url: "addContact.php",
+      data: { cname: $cname, 
+              nickname: $cnickname,  
+              email: $cemail,
+              telephone: $ctelephone,
+              birthday: $cbirthday
+          }
+      })
+      .done(function( msg ) {
+        alert( "Dados salvos");
+      });
+}
+
 </script>
         
         <!--[if lt IE 10]>

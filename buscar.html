@@ -133,28 +133,28 @@
                 </div>					
 						<div class="form-group">
 			                    		<label class="sr-only" for="contact-email">Nome Completo</label>
-			                        	<input type="text" name="nome_completo" placeholder="Nome Completo..." class="contact-email form-control" id="contact-email">
+			                        	<input type="text" name="nome_completo" placeholder="Nome Completo..." class="contact-email form-control" id="contact-cname">
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="contact-subject">Apelido</label>
-			                        	<input type="text" name="apelido" placeholder="Apelido..." class="contact-subject form-control" id="contact-subject">
+			                        	<input type="text" name="apelido" placeholder="Apelido..." class="contact-subject form-control" id="contact-nickname">
 			                        </div>
 
 
             						<div class="form-group">
             							    <div class="input-group input-append date" id="datePicker">
-            								<input type="text" class="form-control" name="date" placeholder="Data inicial de aniversário..."/>
+            								<input type="text" id="contact-bday1" class="form-control" name="date" placeholder="Data inicial de aniversário..."/>
             								<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
             							    </div>
             						</div>
             						<div class="form-group">
             							    <div class="input-group input-append date" id="datePicker2">
-            								<input type="text" class="form-control" name="date" placeholder="Data final de aniversário..."/>
+            								<input type="text" id="contact-bday2" class="form-control" name="date" placeholder="Data final de aniversário..."/>
             								<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
             							    </div>
             						</div>
 
-			                        <button type="submit" class="btn">Buscar</button>
+			                        <button type="submit" onclick="searchContact()" class="btn">Buscar</button>
 			                    </form>
 		                    </div>
                         </div>
@@ -226,6 +226,26 @@ $(document).ready(function() {
         }
     });
 });
+
+
+function searchContact() {
+    var cname = document.getElementById("contact-cname");
+    var cnickname = document.getElementById("contact-nickname");
+    var cbirthday1 = document.getElementById("contact-bday1");
+    var cbirthday2 = document.getElementById("contact-bday2");
+
+        $.ajax({
+      method: "POST",
+      url: "searchContact.php",
+      data: { cname: $cname, 
+              nickname: $cnickname,  
+              birthday1: $cbirthday1,
+              birthday2: $cbirthday2
+          }
+      });
+}
+
+
 </script>
 
 
